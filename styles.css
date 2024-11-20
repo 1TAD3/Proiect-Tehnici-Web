@@ -314,6 +314,7 @@ nav li:hover .dropdown {
     transition: all .5s;
 }
 .content{
+    min-height: calc(100vh - 180px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -524,17 +525,18 @@ nav li:hover .dropdown {
     border-radius: 10px;
 }
 .main-slider-bottom-buttons{
-    width: 550px;
+    width: 40%;
     position: absolute;
     bottom: 30px;
     display: flex;
     z-index: 1;
-    left: calc(50% - 275px);
+    left: 30%;
+    top: 50px;
 }
 .slider-bottom-button-padding{
     padding: 10px 3px;
     box-sizing: border-box;
-    width: calc(100% / 7);
+    width: calc(100% / 4);
 }
 .slider-bottom-button{
     height: 5px;
@@ -543,7 +545,7 @@ nav li:hover .dropdown {
     cursor: pointer;
 }
 .slider-bottom-button-active{
-    background-color: #FF882D;
+    background-color: rgba(255, 20, 147, 1);
 }
 .slider-footnote{
     display: flex;
@@ -885,13 +887,30 @@ nav li:hover .dropdown {
     width: 20px;
     transform: rotate(180deg);
 }
+.donation-slider {
+    padding: 30px 50px;
+    max-height: 650px;
+    height: auto !important;
+}
+.donation-slider .slides{
+    height: calc(100% - 60px);
+    top: 30px;
+}
+.donation-slider .slide{
+    height: auto;
+    overflow: hidden;
+}
 .donation-slider .slider-footnote{
-    height: 170px;
+    height: 140px;
     align-items: flex-end;
 }
 .donation-slider .slider-footnote-link-button{
+    display: flex !important;
     background-color: #800A4A;
     filter: brightness(1.5);
+}
+.donation-slider .slider-footnote-link-button-replacement{
+    display: none !important;
 }
 .hover .donation-slider .slider-footnote-link-button:hover{
     box-shadow: 0 0 20px -3px #F91390;
@@ -916,7 +935,10 @@ nav li:hover .dropdown {
     left: -15px;
 }
 .donation-slider .slider-footnote-details{
-    width: calc(100% - 200px);
+    width: calc(100% - 210px);
+}
+.donation-notice{
+    padding: 20px 20%;
 }
 footer {
     display: flex;
@@ -989,6 +1011,21 @@ footer path{
         font-size: 12px;
     }
 }
+@media (max-width: 1500px){
+    .donation-slider .slider{
+        height: 550px !important;
+    }
+    .donation-slider .slider-footnote-text{
+        font-size: 16px;
+    }
+    .donation-slider .slider-footnote-title{
+        font-size: 20px;
+    }
+    .donation-slider .slider-footnote-link-button{
+        font-size: 16px;
+        padding: 10px;
+    }
+}
 @media (max-width: 1320px){
     .categorii-container{
         grid-template-columns: repeat(2, minmax(0, 1fr));;
@@ -1007,6 +1044,17 @@ footer path{
     .small-price{
         font-size: 14px;
         margin-bottom: 0;
+    }
+}
+@media (max-width: 1200px){
+    .donation-slider .slider-footnote-details{
+        width: calc(100% - 170px);
+    }
+    .donation-slider .slider-footnote-text{
+        font-size: 15px;
+    }
+    .donation-slider .slider-footnote-title{
+        font-size: 18px;
     }
 }
 @media (max-width: 1120px){
@@ -1119,11 +1167,20 @@ footer path{
     .categorie-text div, .categorie-text p{
         text-align: center;
     }
+    .donation-slider .slider-footnote-details{
+        width: calc(100% - 150px);
+    }
+    .donation-slider .slider-footnote-text{
+        font-size: 14px;
+    }
+    .donation-slider .slider-footnote-title{
+        font-size: 17px;
+    }
 }
 @media (max-width: 844px){
-    .slider{
+    /*.slider{
         height: 550px !important;
-    }
+    }*/
     .slider-footnote{
         height: 80px;
     }
@@ -1136,6 +1193,9 @@ footer path{
     .slider-footnote-link-button{
         font-size: 16px;
         padding: 10px;
+    }
+    .donation-slider .slider-footnote-title{
+        font-size: 16px;
     }
 }
 @media (max-width: 720px) {
@@ -1201,6 +1261,19 @@ footer path{
     }
     .slider-footnote-link-button{
         display: none !important;
+    }
+    .donation-slider .slider-footnote-details{
+        width: calc(100% - 100px);
+    }
+    .donation-slider .slider-footnote-text{
+        font-size: 14px;
+    }
+    .donation-slider .slider-footnote-title{
+        font-size: 15px;
+    }
+    .donation-slider .slider-footnote-link-button{
+        padding: 8px;
+        font-size: 14px;
     }
     footer{
         display: grid;
@@ -1313,6 +1386,21 @@ footer path{
     }
     .slider-title, .categorii > h2{
         font-size: 19px;
+    }
+    .donation-slider .slider-footnote{
+        align-items: center;
+        height: 90px;
+    }
+    .donation-slider .slider-footnote-details{
+        width: auto;
+    }
+    .donation-slider .slider-footnote-text{
+        background-color: rgba(255, 255, 255, 0.3);
+        padding: 5px;
+        box-sizing: border-box;
+        border-radius: 3px;
+        font-size: 16px;
+        margin-bottom: 10px;
     }
     .product-text{
         font-size: 12px;

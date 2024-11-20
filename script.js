@@ -351,44 +351,44 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: "We support programs that help people struggling with anxiety, depression, and substance dependency.",
                     button_text: "Donate now",
                     bg_color: "rgba(0, 59, 83, 0.7)",
-                    button_link: "https://livefree999.clothing/"
+                    button_link: "https://livefree999.org/donate/"
 
                 }
             },
             {
-                background: "https://open.spotify.com/embed/track/4VXIryQMWpIdGgYR4TrjT1?utm_source=generator",
+                background: "https://livefree999.org/wp-content/uploads/2023/10/IMG_6130-1.jpeg",
                 id: "slide2",
                 bttn_bottom_id: "mainSliderBttn2",
                 details: {
-                    text: "2. All Girls Are The Same",
-                    title: "1.735.078.351 streams",
-                    button_text: "Listen on YouTube",
-                    bg_color: "#00335A",
-                    button_link: "https://youtu.be/h3EJICKwITw?si=T_hsD9-2voUH9UE4"
+                    text: "LIVE FREE CLOTHING",
+                    title: "Shop our merch and support LIVE FREE 999",
+                    button_text: "Visit store",
+                    bg_color: "rgba(170, 121, 89, 0.7)",
+                    button_link: "https://livefree999.clothing/"
                 }
             },
             {
-                background: "https://open.spotify.com/embed/track/7FIWs0pqAYbP91WWM0vlTQ?utm_source=generator",
+                background: "https://livefree999.org/wp-content/uploads/2023/01/EF6B2CE9-2813-4CBE-B22D-366141E921F9-scaled.jpeg",
                 id: "slide3",
                 bttn_bottom_id: "mainSliderBttn3",
                 details: {
-                    text: "3. Godzilla (feat. Juice WRLD)",
-                    title: "1.566.003.201 streams",
-                    button_text: "Listen on YouTube",
-                    bg_color: "#501125",
-                    button_link: "https://youtu.be/r_0JjYUe5jo?si=DJrE7TYUawYZgihJ"
+                    text: "Impact report",
+                    title: "Learn more about our work in 2023",
+                    button_text: "View the report",
+                    bg_color: "rgba(48, 35, 58, 0.7)",
+                    button_link: "https://livefree999.org/wp-content/uploads/2024/02/Live-Free-999-Impact-Report-2023-FINAL.pdf"
                 }
             },
             {
-                background: "https://open.spotify.com/embed/track/6iaSML1PIYq936g62BDtBq?utm_source=generator",
+                background: "https://livefree999.org/wp-content/uploads/2022/05/juice-wallpaper.jpg",
                 id: "slide4",
                 bttn_bottom_id: "mainSliderBttn4",
                 details: {
-                    text: "4. Robbery",
-                    title: "1.363.750.341 streams",
-                    button_text: "Listen on YouTube",
-                    bg_color: "#3C005C",
-                    button_link: "https://youtu.be/iI34LYmJ1Fs?si=tnih3GIJt1Y6dHfU"
+                    text: "#999Stories",
+                    title: "Share Your Story about Mental Health",
+                    button_text: "Join the conversation",
+                    bg_color: "rgb(253, 141, 60, 0.7)",
+                    button_link: "https://livefree999.org/999stories/"
                 }
             }
         ];
@@ -550,6 +550,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                 new_slide_r.style.width = "0px";
                                 new_slide_r.src = slider[i_r].background;
                                 slides.insertBefore(new_slide_r, slides.firstElementChild);
+                                // sliderFootnote(i_r, new_slide_r, false);
                                 setTimeout(() =>{
                                     new_slide_r.style.width = "calc(100% / 3 + 0.02px)";
                                 },  5);
@@ -561,6 +562,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     new_slide.style.width = "0px";
                                     new_slide.src = slider[i].background;
                                     slides.insertBefore(new_slide, slides.firstElementChild);
+                                    // sliderFootnote(i, new_slide, false);
                                     setTimeout(() =>{
                                         new_slide.style.width = "calc(100% / 3 + 0.02px)";
                                     },  5);
@@ -573,6 +575,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                         new_slide_l.style.width = "0px";
                                         new_slide_l.src = slider[i_l].background;
                                         slides.insertBefore(new_slide_l, slides.firstElementChild);
+                                        // sliderFootnote(i_l, new_slide_l, false);
                                         setTimeout(() =>{
                                             new_slide_l.style.width = "calc(100% / 3 + 0.02px)";
                                         },  5);
@@ -753,7 +756,7 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log(location.href.split("/").slice(-1)[0]);
     if(location.href.split("/").slice(-1)[0] == "albums.html") slider(albums, mainSlider, "calc(100% - 100px)", "600px", false, false, mainSlides, undefined, "iframe");
     if(location.href.split("/").slice(-1)[0] == "singles.html") slider(singles, mainSlider, "calc(100% - 100px)", "550px", false, false, mainSlides, undefined, "iframe");
-    if(location.href.split("/").slice(-1)[0] == "donation.html") slider(donation_slides, mainSlider, "calc(100% - 100px)", "80%", false, true, mainSlides, undefined, "img");
+    if(location.href.split("/").slice(-1)[0] == "donation.html") slider(donation_slides, mainSlider, "calc(100% - 100px)", "auto", false, true, mainSlides, undefined, "img");
     let slider_products =[
         {
             button: "Outerwear",
