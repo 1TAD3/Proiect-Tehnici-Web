@@ -1336,13 +1336,14 @@ document.addEventListener("DOMContentLoaded", function () {
         color_index = 1;
     let styleSheet = document.createElement("style");
     styleSheet.id = "themeStyle";
-    console.log(getLocal(defaultBttn));
+    console.log(localStorage.getItem("defaultBttn"));
     if(localStorage.getItem("defaultBttn") == null){
         console.log(2);
         setLocal(defaultBttn, "pinkBttn");
         setLocal(colorIndex, 1);
     }
-    color_index = getLocal(color_index);
+    color_index = getLocal(colorIndex);
+    console.log(getLocal(colorIndex));
     changeTheme(getLocal(defaultBttn), getLocal(colorIndex), colors[color_index].scene, colors[color_index].particle, colors[color_index].price, colors[color_index].light, colors[color_index].dark);
     let particlesContainer = document.createElement('div');
     particlesContainer.classList.add('particles');
@@ -1428,7 +1429,7 @@ document.addEventListener("DOMContentLoaded", function () {
         default_bttn.classList.remove("default");
         document.getElementById(bttn_theme).classList.add("default");
         setLocal(defaultBttn, bttn_theme);
-        setLocal(color_index, color_i);
+        setLocal(colorIndex, color_i);
         default_bttn = document.getElementById(bttn_theme);
         color_index = color_i;
         let styles = `
@@ -1510,4 +1511,8 @@ document.addEventListener("DOMContentLoaded", function () {
             }, 100);
         });
     }, 5000);
+    login.onclick = () => {
+        setLocal("address", location.href.split("/").slice(-1)[0]);
+        window.location.href = "juice-login";
+    }
 });

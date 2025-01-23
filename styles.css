@@ -1173,19 +1173,22 @@ footer path{
 }
 @media (max-width: 920px) {
     nav ul{
-        height: 200px;
+        height: 250px;
         flex-direction: column;
         transition: all 0.5s;
         align-items: center;
     }
     nav ul li {
         width: fit-content;
-        height: calc(100% / 4);
+        height: calc(100% / 5);
         transition: all 0.5s;
+    }
+    .theme-changer{
+        top: 25px;
     }
     .dropdown {
         padding: 0;
-        width: max-content;   
+        width: 80%;   
         height: auto;     
         top: -2px;
         border: 2px solid grey;
