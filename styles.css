@@ -47,6 +47,7 @@ nav ul {
 
 nav ul li {
     display: inline;
+    margin: 0 3%;
     position: relative;
 }
 
@@ -62,7 +63,87 @@ nav a {
 nav a:hover,.hover #menuSvg:hover {
     background-color: #444;
 }
-
+.theme-changer{
+    user-select: none;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    right: 8vw;
+    top: 35px;
+    z-index: 2;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 20, 147, 0.5);
+    box-shadow: -4px 0 7px 0px rgba(255, 20, 147, 0.5);
+    background-color: black;
+    transition: 0.5s all;
+}
+.theme-changer-svg{
+    color: rgba(255, 20, 147, 0.7);
+    position: absolute;
+    right: 12px;
+    transition: 0.3s all;
+}
+.theme-changer-svg:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    color: white;
+}
+.theme-text-svg{
+    height: 40px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 5px 10px 0;
+    box-sizing: border-box;
+}
+.closed-theme-changer{
+    border: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+.theme-text{
+    font-size: 17px;
+    opacity: 0;
+    transition: 0.7s all;
+}
+.closed-theme-text{
+    display: none;
+}
+.theme-select{
+    display: none;
+    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.default{
+    border: 2px solid lightgreen;
+    padding: 2px;
+    box-sizing: border-box;
+}
+.pink-theme{
+    background-color: rgba(255, 20, 147, 0.5);
+}
+.purple-theme{
+    background-color: rgb(60, 0, 92);
+}
+.blue-theme{
+    background-color: rgb(0, 69, 109);
+}
+.yellow-theme{
+    background-color: rgb(214, 185, 19);
+}
+.theme{
+    height: 40px;
+    width: 60px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.5s width;
+}
+.closed-theme > .theme{
+    width: 0;
+}
 .dropdown {
     display: none;
     position: absolute;
@@ -93,6 +174,7 @@ nav li:hover .dropdown {
     }
 }
 .white-glow{
+    user-select: none;
     text-shadow: white 0px 0px 5px;
 }
 .scene{
@@ -369,11 +451,11 @@ nav li:hover .dropdown {
     object-fit: cover;
     width: 700px;
 }
-.info a{
+.info-a{
     color: rgba(255, 20, 147, 0.5);
 }
-.quote:before{
-    content: "";
+.quote-before{
+    user-select: none;
     height: calc(100% - 80px);
     width: 10px;
     background-color: rgba(255, 20, 147, 0.5);
@@ -382,8 +464,8 @@ nav li:hover .dropdown {
     left: 10%;
     border-radius: 5px;
 }
-.quote:after{
-    content: "";
+.quote-after{
+    user-select: none;
     height: calc(100% - 80px);
     width: 10px;
     background-color: rgba(255, 20, 147, 0.5);
@@ -400,6 +482,7 @@ nav li:hover .dropdown {
     text-align: center;
 }
 .quotes{
+    user-select: none;
     position: absolute;
     font-size: 70px;
     font-weight: bold;
@@ -593,7 +676,7 @@ nav li:hover .dropdown {
 }
 .hover .slider-footnote-link-button:hover{
     filter: brightness(2);
-    box-shadow: 0 0 20px -3px red;
+    box-shadow: 0 0 20px -3px red !important;
 }
 .slider-footnote .orange-button{
     max-width: 275px;
@@ -812,6 +895,7 @@ nav li:hover .dropdown {
     align-items: flex-start;
     padding: 30px 40px;
     box-sizing: border-box;
+    user-select: none;
 }
 .categorii > h2{
     color: white;
@@ -1089,14 +1173,14 @@ footer path{
 }
 @media (max-width: 920px) {
     nav ul{
-        height: 350px;
+        height: 200px;
         flex-direction: column;
         transition: all 0.5s;
         align-items: center;
     }
     nav ul li {
         width: fit-content;
-        height: calc(100% / 7);
+        height: calc(100% / 4);
         transition: all 0.5s;
     }
     .dropdown {
@@ -1119,10 +1203,10 @@ footer path{
         font-size: 18px;
         padding: 80px 10%;
     }
-    .quote:before{
+    .quote-before{
         left: 5%;
     }
-    .quote:after{
+    .quote-after{
         right: 5%;
     }
     .quotes{
@@ -1357,7 +1441,7 @@ footer path{
     .quotes{
         font-size: 40px;
     }
-    .quote:before, .quote:after{
+    .quote-before, .quote-after{
         width: 7px;
     }
     .info .quote-credits{
@@ -1474,7 +1558,7 @@ footer path{
     .quotes{
         font-size: 35px;
     }
-    .quote:before, .quote:after{
+    .quote-before, .quote-after{
         width: 7px;
     }
     .quote-credits{

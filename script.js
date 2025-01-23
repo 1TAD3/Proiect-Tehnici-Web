@@ -114,53 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
-    let particlesContainer = document.createElement('div');
-    particlesContainer.classList.add('particles');
-    document.body.appendChild(particlesContainer);
 
-    for (let i = 0; i < 300; i++) {
-        let particle = document.createElement('div');
-        particle.classList.add('particle');
-        particle.style.position = 'absolute';
-        particle.style.borderRadius = '50%';
-        particle.style.backgroundColor = '#FF4BD6';
-        particle.style.width = Math.random() * 5 + 'px';
-        particle.style.height = particle.style.width;
-        particle.style.left = Math.random() * window.innerWidth + 'px';
-        particle.style.top = Math.random() * window.innerHeight + 'px';
-        particlesContainer.appendChild(particle);
-
-        // Move particles
-        particle.style.transition = 'transform 3s linear';
-        let moveParticle = () => {
-            let x = Math.random() * 50 - 1; 
-            let y = Math.random() * 50 - 1;
-            particle.style.transform = `translate(${x}px, ${y}px)`;
-        };
-        setInterval(moveParticle, 3000); 
-    }
-    let style = document.createElement('style');
-    style.innerHTML = `
-        .fade-in {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.5s ease-in, transform 0.5s ease-in;
-        }
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 0;
-        }
-        .particle {
-            opacity: 0.5;
-        }
-    `;
-    document.head.appendChild(style);
     function countDownFunction() {
         let second = 1000,
             minute = second * 60,
@@ -172,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
             mm = String(today.getMonth() + 1).padStart(2, "0"),
             yyyy = today.getFullYear(),
             nextYear = yyyy + 1,
-            dayMonth = "11/22/",
+            dayMonth = "01/25/",
             birthday = dayMonth + yyyy;
       
         today = mm + "/" + dd + "/" + yyyy;
@@ -1331,29 +1285,220 @@ document.addEventListener("DOMContentLoaded", function () {
             cat_text.appendChild(p);
         }
     }
+    let colors = ["",
+        {
+            scene: "#3E0423",
+            particle: "rgb(255, 75, 214)",
+            light: "rgba(255, 20, 147, 0.5)",
+            dark: "#800A4A",
+            price: "#C00F6F",
+            neon: "rgb(255, 53, 155)"
+        },
+        {
+            scene: "rgb(10, 33, 73)",
+            particle: "rgb(0, 85, 173)",
+            light: "rgba(0, 86, 173, 0.7)",
+            dark: "rgb(0, 69, 109)",
+            price: "rgb(0, 75, 130)",
+            neon: "rgb(54, 97, 223)"
+        },
+        {
+            scene: "rgb(41, 18, 46)",
+            particle: "rgb(80, 30, 125)",
+            light: "rgb(90, 45, 145, 0.7)",
+            dark: "rgb(51, 15, 87)",
+            price: "rgb(80, 30, 125)",
+            neon: "rgb(131, 8, 255)"
+        },
+        {
+            scene: "rgb(156, 97, 12)",
+            particle: "rgb(228, 166, 8)",
+            light: "rgba(237, 176, 10, 0.7)",
+            dark: "rgb(193, 128, 9)",
+            price: "rgb(205, 141, 14)",
+            neon: "rgb(252, 218, 9)"
+        }
+    ];
+    function localData(a,b){
+        return null == b ? localStorage.getItem(a) : localStorage.setItem(a,b);
+    }
+    function getLocal(key){
+        let datastr = localData(key),
+            data = !datastr ? {} : JSON.parse(datastr);
+        return data;
+    }
+    function setLocal(key, data){
+        localData(key, JSON.stringify(data));
+    }
+    let defaultBttn = "defaultBttn",
+        colorIndex = "colorIndex";
+    let default_bttn = pinkBttn,
+        color_index = 1;
+    let styleSheet = document.createElement("style");
+    styleSheet.id = "themeStyle";
+    console.log(getLocal(defaultBttn));
+    if(localStorage.getItem("defaultBttn") == null){
+        console.log(2);
+        setLocal(defaultBttn, "pinkBttn");
+        setLocal(colorIndex, 1);
+    }
+    color_index = getLocal(color_index);
+    changeTheme(getLocal(defaultBttn), getLocal(colorIndex), colors[color_index].scene, colors[color_index].particle, colors[color_index].price, colors[color_index].light, colors[color_index].dark);
+    let particlesContainer = document.createElement('div');
+    particlesContainer.classList.add('particles');
+    document.body.appendChild(particlesContainer);
+
+    for (let i = 0; i < 300; i++) {
+        let particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.position = 'absolute';
+        particle.style.borderRadius = '50%';
+        particle.style.backgroundColor = `${colors[color_index].light}`;
+        particle.style.width = Math.random() * 5 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.left = Math.random() * window.innerWidth + 'px';
+        particle.style.top = Math.random() * window.innerHeight + 'px';
+        particlesContainer.appendChild(particle);
+
+        // Move particles
+        particle.style.transition = 'transform 3s linear';
+        let moveParticle = () => {
+            let x = Math.random() * 50 - 1; 
+            let y = Math.random() * 50 - 1;
+            particle.style.transform = `translate(${x}px, ${y}px)`;
+        };
+        setInterval(moveParticle, 3000); 
+    }
+    let style = document.createElement('style');
+    style.innerHTML = `
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease-in, transform 0.5s ease-in;
+        }
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .particle {
+            opacity: 0.5;
+        }
+    `;
+    document.head.appendChild(style);
+    let theme_panel = "closed";
+    themeBttn.onclick = () =>{
+        if(theme_panel == "closed"){
+            themeSelect.style.display = "grid";
+            setTimeout(()=>{
+                themeSelect.classList.remove("closed-theme");
+                themeChanger.classList.remove("closed-theme-changer");
+                themeTxt.classList.remove("closed-theme-text");
+            }, 1);
+            setTimeout(()=>{
+                themeTxt.style.opacity ="1";
+            }, 100);
+            setTimeout(()=>{
+                theme_panel = "open"
+            },500);
+        }
+        else{
+            themeTxt.style.opacity ="0";
+            themeSelect.classList.add("closed-theme");
+            themeChanger.classList.add("closed-theme-changer");
+            setTimeout(()=>{
+                themeTxt.classList.add("closed-theme-text");
+                themeSelect.style.display = "none";
+            }, 200);
+            setTimeout(()=>{
+                theme_panel = "closed"
+            },500);
+        }
+    }
+    pinkBttn.onclick = () =>{changeTheme("pinkBttn", 1, colors[1].scene, colors[1].particle, colors[1].price, colors[1].light, colors[1].dark);};
+    blueBttn.onclick = () =>{changeTheme("blueBttn", 2, colors[2].scene, colors[2].particle, colors[2].price, colors[2].light, colors[2].dark);};
+    purpleBttn.onclick = () =>{changeTheme("purpleBttn", 3, colors[3].scene, colors[3].particle, colors[3].price, colors[3].light, colors[3].dark);};
+    yellowBttn.onclick = () =>{changeTheme("yellowBttn", 4, colors[4].scene, colors[4].particle, colors[4].price, colors[4].light, colors[4].dark);};
+    function changeTheme(bttn_theme, color_i, scene_color, particle_color, price_color, light, dark){
+        default_bttn.classList.remove("default");
+        document.getElementById(bttn_theme).classList.add("default");
+        setLocal(defaultBttn, bttn_theme);
+        setLocal(color_index, color_i);
+        default_bttn = document.getElementById(bttn_theme);
+        color_index = color_i;
+        let styles = `
+            .scene{
+                background-color: ${scene_color};
+            }
+            .particle{
+                background-color: ${particle_color} !important;
+            }
+            .quote-after, .quote-before, .torch-beam, .slider-button-left , .slider-button-right, .pink-button, .slider-button-active{ 
+                background-color: ${light} !important;
+            }
+            .donation-slider .slider-footnote-link-button, .label, .cart-icon{
+                background-color: ${dark};
+            }
+            .categorie-text span{
+                color: ${dark};
+            }
+            .quotes-top, .quotes-bottom, .theme-changer-svg, .info-a{
+                color: ${light};
+            }
+            .price{
+                color: ${price_color};
+            }
+            .theme-changer, .side-socials, .side-socials-arrow, .slider-button-left, .slider-button-right, .pink-button, .slider-button-active{
+                border-color: ${light} !important;
+            }
+            .side-socials-arrow{
+                border-right: 1px solid black !important;
+                box-shadow: -5px 0 7px 1px ${light};
+            }
+            .theme-changer, .side-socials, .slider-button-right, .slider-button-left{
+                box-shadow: -2px 0 7px 1px ${light};
+            }
+            .hover .categorie:hover, .hover .pink-button:hover, .hover .product:hover{
+                box-shadow: 0 0 35px -13px ${light};
+            }
+            .hover .donation-slider .slider-footnote-link-button:hover{
+                box-shadow: 0 0 20px -3px ${light};
+            }
+            .torch-beam{
+                box-shadow: 0 5px 10px 15px ${light};
+            }
+        `;
+        styleSheet.textContent = styles;
+        document.head.appendChild(styleSheet);
+    }
     if(location.href.split("/").slice(-1)[0] == "merch.html") Categorii();
     let neonElements = document.querySelectorAll('.neon');
     setInterval(()=>{
         neonElements.forEach(element => {
             element.style.opacity ='0.8'
-            element.style.color = '#FF4BD6';
-            element.style.textShadow = '0 0 5px #FF4BD6, 0 0 10px#FF4BD6, 0 0 15px #FF4BD6, 0 0 20px #0099ff';
+            element.style.color = `${colors[color_index].neon}`;
+            element.style.textShadow = `0 0 5px ${colors[color_index].neon}, 0 0 10px ${colors[color_index].neon}, 0 0 15px ${colors[color_index].neon}, 0 0 20px #0099ff`;
             setTimeout(()=>{
                 element.style.opacity ='1'
                 element.style.color = 'white'; 
                 element.style.textShadow = 'white 0px 0px 5px';
                 setTimeout(()=>{
                     element.style.opacity ='0.8'
-                    element.style.color = '#FF4BD6';
-                    element.style.textShadow = '0 0 5px #FF4BD6, 0 0 10px#FF4BD6, 0 0 15px #FF4BD6, 0 0 20px #0099ff';
+                    element.style.color = `${colors[color_index].neon}`;
+                    element.style.textShadow = `0 0 5px ${colors[color_index].neon}, 0 0 10px ${colors[color_index].neon}, 0 0 15px ${colors[color_index].neon}, 0 0 20px #0099ff`;
                     setTimeout(()=>{
                         element.style.opacity ='1'
                         element.style.color = 'white'; 
                         element.style.textShadow = 'white 0px 0px 5px';
                         setTimeout(()=>{
                             element.style.opacity ='0.8'
-                            element.style.color = '#FF4BD6';
-                            element.style.textShadow = '0 0 5px #FF4BD6, 0 0 10px#FF4BD6';
+                            element.style.color = `${colors[color_index].neon}`;
+                            element.style.textShadow = `0 0 5px ${colors[color_index].neon}, 0 0 10px ${colors[color_index].neon}`;
                             setTimeout(()=>{
                                 element.style.opacity ='1'
                                 element.style.color = 'white'; 
